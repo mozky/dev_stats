@@ -32,7 +32,7 @@ export default class PullRequests extends Component {
 
     return (
       <div id="pull_requests">
-        <h1>Pull Requests</h1>
+        <h1 className="title">Pull Requests</h1>
         <h2>Open</h2>
         <ul>
           { openPrItems }

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*background: linear-gradient(135deg, #c33764 0%, #1d2671 100%);*/
+    /*background: linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%);*/
+    color: #eee;
+    font-family: 'Roboto', sans-serif;
+    background: #222;
+    /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(225deg, #16222A 0%, #26323A 85%, #66727A 100%);*/
+    /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #8e9eab 0%, #E2E2E2 100%);*/
+    /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #274046 0%, #E6DADA 100%);*/
+    background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #274046 0%, #757F9A 100%);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 200px, 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+#root {
+    width: 96%;
+    height: 100%;
+    margin: 0 auto;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+#App-header {
+    padding: 15px 0;
+    color: white;
+    /*background: linear-gradient(135deg, #3f465a 0%, #3f465a 20%, #495169 20%, #495169 40%, #57607c 40%, #57607c 60%, #697496 60%, #697496 80%, #8790ab 80%);*/
+}
+#App-header h1 {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#App-header:after {
+    content: "";
+    display: block;
+    margin-top: 10px;
+    height: 2px;
+    background: linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%);
+}
+#App-header {
+    height: 10%;
+}
+#App-body {
+    height: 90%;
+}
+
+#main_content {
+    display: flex;
+    height: 100%;
+}
+
+#projects {
+    height: 100%;
+    width: 70%;
+}
+
+#pull_requests {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%
+}
+
+#pull_requests ul:last-of-type {
+    overflow-y: scroll;
+}
+
+.barWrapper {
+    height: 5px;
+}
+
+.barWrapper .bar {
+    height: 5px;
+}
+
+.projectsBody {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+}
+
+.project {
+  flex-grow: 1;
+}
+
+.title {
+  text-align: center;
+}
+
+#loading-text {
+  text-align: center;
+  padding-top: 35vh;
+}
+
+#hidden-text {
+  text-align: center;
+  opacity: .420;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
