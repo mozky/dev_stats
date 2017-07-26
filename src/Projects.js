@@ -106,7 +106,6 @@ export default class Projects extends Component {
     if (projects)
     return (
       <div id="projects">
-        <h2>Projects</h2>
         <div className="projectsBody">
           { projectsItems }
         </div>

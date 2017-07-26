@@ -63,12 +63,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 90%;
 }
 
-#dude {
+#main_content {
     display: flex;
     height: 100%;
 }
 
 #projects {
+    height: 100%;
     width: 70%;
 }
 
@@ -89,4 +90,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .barWrapper .bar {
     height: 5px;
+}
+
+.projectsBody {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+}
+
+.project {
+  flex-grow: 1;
+}
+
+.title {
+  text-align: center;
+}
+
+#loading-text {
+  text-align: center;
+  padding-top: 35vh;
+}
+
+#hidden-text {
+  text-align: center;
+  opacity: .420;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
