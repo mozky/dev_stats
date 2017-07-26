@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #projects {
+    padding-right: 2em;
     height: 100%;
     width: 70%;
 }
@@ -84,14 +85,6 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: scroll;
 }
 
-.barWrapper {
-    height: 5px;
-}
-
-.barWrapper .bar {
-    height: 5px;
-}
-
 .projectsBody {
   display: flex;
   flex-flow: column nowrap;
@@ -102,6 +95,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .project {
   flex-grow: 1;
+  text-align: center;
+}
+
+.barWrapper {
+  height: 2.5em;
+  border: 1px solid white;
+}
+
+.barWrapper .bar {
+  height: 2.5em;
 }
 
 .title {
