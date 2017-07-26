@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GitHub from 'github-api'
 import Projects from './Projects'
 import PullRequests from './PullRequests'
+import Users from './Users'
 import './App.css'
 
 class App extends Component {
@@ -38,8 +39,25 @@ class App extends Component {
             }
           })
 
+          let mexTeamInfo =[]
+
+          mexTeam.forEach((user) => {
+            let userVar = gh.getUser(user);
+            userVar.getProfile().then((res) => {
+              let dataInfo = res.data
+              console.log(dataInfo)
+              mexTeamInfo.push({
+                userName: dataInfo.name,
+                avatarurl: dataInfo.avatar_url,
+                htmlurl: dataInfo.html_url
+              })
+            })
+          })
+
+
           that.setState({
-            prs: openPrs
+            prs: openPrs,
+            infoteam: mexTeamInfo
           })
         }).catch((err) => {
           console.log(err)
@@ -50,6 +68,7 @@ class App extends Component {
 
   render() {
     const prsList = this.state.prs
+    const infoTeamList = this.state.infoteam
 
     if (prsList !== 'null') {
       return (
@@ -61,6 +80,7 @@ class App extends Component {
             <div id="dude">
               <Projects />
               <PullRequests prs={prsList}/>
+              <Users infoteam={infoTeamList}/>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ export default class Users extends Component{
     }
 
     render(){
-      const teamInfo = this.props.infoTeam
+      const teamInfo = this.props.infoteam
       let usersElement = teamInfo.map((info) =>
         <li key={info.userName}>
           <a href={info.htmlurl}>{info.userName}</a>
