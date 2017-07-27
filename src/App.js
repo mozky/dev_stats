@@ -74,10 +74,10 @@ class App extends Component {
       return (
         <div className="App">
           <div id="App-header">
-            <p>Dev Stats</p>
+            <h1 className="title">Dev Stats</h1>
           </div>
           <div id="App-body">
-            <div id="dude">
+            <div id="main_content">
               <Projects />
               <PullRequests prs={prsList}/>
               <Users infoteam={infoTeamList}/>
@@ -88,7 +88,8 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-            Loading data...
+            <h1 id="loading-text">Loading data...</h1>
+            <p id="hidden-text">if you can read this, the application may be broken... invoke your favorite dev monkey to fix it</p>
         </div>
       )
     }

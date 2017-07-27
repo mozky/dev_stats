@@ -84,7 +84,7 @@ export default class Projects extends Component {
     }
 
     return (
-      <div className="project">
+      <div className="project" key={pr.name}>
         <div className="projectThumb">
           {pr.users} - {pr.name}
         </div>
@@ -106,7 +106,6 @@ export default class Projects extends Component {
     if (projects)
     return (
       <div id="projects">
-        <h1>Projects</h1>
         <div className="projectsBody">
           { projectsItems }
         </div>
