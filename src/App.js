@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import GitHub from 'github-api'
 import Projects from './Projects'
 import PullRequests from './PullRequests'
-import Users from './Users'
 import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      prs: 'null'
+      prs: 'null',
+      infoteam: 'null'
     }
   }
 
@@ -29,9 +29,9 @@ class App extends Component {
       let userVar = gh.getUser(user);
       userVar.getProfile().then((res) => {
         let dataInfo = res.data
-        console.log(dataInfo)
         mexTeamInfo.push({
-          userName: dataInfo.name,
+          username: dataInfo.login,
+          fullName: dataInfo.name,
           avatarurl: dataInfo.avatar_url,
           htmlurl: dataInfo.html_url
         })
@@ -39,6 +39,8 @@ class App extends Component {
     })
 
     edlio.getRepos(function(err, repos) {
+      if (err)
+        return err
       repos.forEach((repo) => {
         gh.getRepo('edlio', repo.name).listPullRequests({state: 'all'}).then((res) => {
           let prs = res.data
@@ -53,14 +55,14 @@ class App extends Component {
               })
             }
           })
+          that.setState({
+            prs: openPrs,
+            infoteam: mexTeamInfo
+          })
         }).catch((err) => {
           console.log(err)
         })
 
-        that.setState({
-          prs: openPrs,
-          infoteam: mexTeamInfo
-        })
 
       })
     })
@@ -70,7 +72,9 @@ class App extends Component {
     const prsList = this.state.prs
     const infoTeamList = this.state.infoteam
 
-    if (prsList !== 'null') {
+    // ESTO ESTA MUY FEO, Y CREO QUE SE LO QUE CAUSA EL LOOP FEO EN Projects
+    // BUSCAR OTRA FORMA, USANDO COMPONENT WILL MOUNT O ALGO ASI.
+    if (prsList !== 'null' && infoTeamList !== 'null') {
       return (
         <div className="App">
           <div id="App-header">
@@ -78,9 +82,8 @@ class App extends Component {
           </div>
           <div id="App-body">
             <div id="main_content">
-              <Projects />
+              <Projects team={infoTeamList}/>
               <PullRequests prs={prsList}/>
-              <Users infoteam={infoTeamList}/>
             </div>
           </div>
         </div>

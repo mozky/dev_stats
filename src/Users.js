@@ -9,7 +9,7 @@ export default class Users extends Component{
       const teamInfo = this.props.infoteam
       let usersElement = teamInfo.map((info) =>
         <li key={info.userName}>
-          <a href={info.htmlurl}>{info.userName}</a>
+          <a href={info.htmlurl}>{info.fullName}</a>
           <img src={info.avatarurl} style={{width:50,height:50}} />
         </li>
       )

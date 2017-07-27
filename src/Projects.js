@@ -53,6 +53,7 @@ export default class Projects extends Component {
       "backgroundColor": this.getProgressBarColor(pr.completed)
     }
 
+    // We create the 'status bar' for each project
     switch(pr.state) {
       case 'coding':
         stateItem = (
@@ -83,10 +84,29 @@ export default class Projects extends Component {
         )
     }
 
+    let usersItem = [];
+
+    // BUG: ALGO ESTA RARO POR AQUI QUE SE LOOPEA MUY FEO
+
+    // We add the user thumbnail for each project
+    pr.users.forEach(user => {
+      this.props.team.forEach((teamMember) => {
+        if (user === teamMember.username)
+          usersItem.push(
+            <div key={teamMember.username}>
+              <a href={teamMember.htmlurl}>
+                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width:50,height:50}} />
+                {teamMember.fullName}
+              </a>
+            </div>
+          )
+      })
+    })
+
     return (
       <div className="project" key={pr.name}>
         <div className="projectThumb">
-          {pr.users} - {pr.name}
+          {usersItem.map(user => user)}
         </div>
         <div className="projectState">
           {stateItem}
@@ -99,7 +119,7 @@ export default class Projects extends Component {
 
     const projects = this.state.projects
 
-    const projectsItems = projects.map((pr) => {
+    const projectsItems = projects.map(pr => {
       return this.getProjectItem(pr)
     })
 
