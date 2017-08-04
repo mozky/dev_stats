@@ -86,8 +86,6 @@ export default class Projects extends Component {
 
     let usersItem = [];
 
-    // BUG: ALGO ESTA RARO POR AQUI QUE SE LOOPEA MUY FEO
-
     // We add the user thumbnail for each project
     pr.users.forEach(user => {
       this.props.team.forEach((teamMember) => {
