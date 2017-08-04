@@ -21,7 +21,7 @@ export default class PullRequests extends Component {
 
       let openPrItems = openPrs.map((pr) =>
       <li key={pr.repo + '-' + pr.number}>
-      {pr.user.login} [{pr.repo} - {pr.state.toUpperCase()}: {pr.title}
+      [{pr.repo} - {pr.user.login}]: {pr.title}
         </li>
       )
 

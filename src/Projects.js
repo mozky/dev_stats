@@ -93,8 +93,8 @@ export default class Projects extends Component {
           usersItem.push(
             <div key={teamMember.username}>
               <a href={teamMember.htmlurl}>
-                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width:50,height:50}} />
-                {teamMember.fullName}
+                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width: '6em', height: '6em'}} />
+                <p className="userName">{teamMember.fullName}</p>
               </a>
             </div>
           )
@@ -103,6 +103,7 @@ export default class Projects extends Component {
 
     return (
       <div className="project" key={pr.name}>
+        <p className="projectTitle">{pr.name}</p>
         <div className="projectThumb">
           {usersItem.map(user => user)}
         </div>

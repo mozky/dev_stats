@@ -7,6 +7,10 @@ html, body {
     padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
     /*background: linear-gradient(135deg, #c33764 0%, #1d2671 100%);*/
     /*background: linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%);*/
@@ -83,6 +87,23 @@ h1, h2, h3, h4, h5, h6 {
 
 #pull_requests ul:last-of-type {
     overflow-y: scroll;
+}
+
+.projectThumb {
+  display: flex;
+  justify-content: space-around;
+}
+
+.userName {
+  margin-top: .2em;
+  color: white;
+  font-weight: bold;
+}
+
+.projectTitle {
+  font-size: 2em;
+  font-weight: bold;
+  margin: .2em 0;
 }
 
 .projectsBody {

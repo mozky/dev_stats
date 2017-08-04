@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GitHub from 'github-api'
 import Projects from './Projects'
 import PullRequests from './PullRequests'
-import './App.css'
+import './css/index.css'
 
 class App extends Component {
   constructor(props) {
@@ -124,7 +124,7 @@ class App extends Component {
       return (
         <div className="App">
           <div id="App-header">
-            <h1 className="title">Dev Stats</h1>
+            <h1 className="title">Development Stats</h1>
           </div>
           <div id="App-body">
             <div id="main_content">
