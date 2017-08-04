@@ -7,73 +7,119 @@ import './App.css'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.getReposInfo = this.getReposInfo.bind(this)
+    this.getTeamInfo = this.getTeamInfo.bind(this)
+    this.gh = new GitHub({
+      token: 'de0c27930154c553912f47d8b58ceb2b559e73fa'
+    })
+    this.mexTeam = ['sainoba', 'LuisEvilCo', 'mozky', 'quijaman1988', 'thalianetzahuatl', 'Sler69', 'luisaguilar2910']
     this.state = {
       prs: 'null',
       infoteam: 'null'
     }
   }
 
-  componentDidMount() {
-    const that = this
-    const mexTeam = ['sainoba', 'LuisEvilCo', 'mozky', 'quijaman1988', 'thalianetzahuatl', 'Sler69', 'luisaguilar2910']
-    const gh = new GitHub({
-      token: 'de0c27930154c553912f47d8b58ceb2b559e73fa'
-    })
+  getTeamInfo() {
+    return new Promise((resolve, reject) => {
 
-    let mexTeamInfo =[]
-    let openPrs = []
+      let mexTeamInfo = []
 
-    let edlio = gh.getOrganization('edlio')
-
-    mexTeam.forEach((user) => {
-      let userVar = gh.getUser(user);
-      userVar.getProfile().then((res) => {
-        let dataInfo = res.data
-        mexTeamInfo.push({
-          username: dataInfo.login,
-          fullName: dataInfo.name,
-          avatarurl: dataInfo.avatar_url,
-          htmlurl: dataInfo.html_url
+      this.mexTeam.forEach((user) => {
+        this.gh.getUser(user).getProfile().then((res) => {
+          let dataInfo = res.data
+          mexTeamInfo.push({
+            username: dataInfo.login,
+            fullName: dataInfo.name,
+            avatarurl: dataInfo.avatar_url,
+            htmlurl: dataInfo.html_url
+          })
         })
       })
-    })
 
-    edlio.getRepos(function(err, repos) {
-      if (err)
-        return err
-      repos.forEach((repo) => {
-        gh.getRepo('edlio', repo.name).listPullRequests({state: 'all'}).then((res) => {
-          let prs = res.data
-          prs.forEach((pr) => {
-            if(mexTeam.indexOf(pr.user.login) > 0) {
-              openPrs.push({
-                repo: repo.name,
-                number: pr.number,
-                user: pr.user,
-                title: pr.title,
-                state: pr.state
+      resolve(mexTeamInfo)
+
+    })
+  }
+
+  getReposInfo() {
+    const that = this
+    return new Promise ((resolve, reject) => {
+
+      const edlio = that.gh.getOrganization('edlio')
+      const reposPrs = []
+
+      edlio.getRepos().then((repos) => {
+        repos.data.forEach((repo) => {
+          // Ignore forked repos
+          if (!repo.fork) {
+            reposPrs.push(new Promise((resolve, reject) => {
+              that.gh.getRepo('edlio', repo.name).listPullRequests({state: 'all'}).then((res) => {
+                if (res.data.length > 0) {
+                  resolve(res.data.filter(pr => {
+                    if (that.mexTeam.indexOf(pr.user.login) > 0) {
+                      return pr
+                    }
+                    return false
+                  }))
+                } else {
+                  // This Repo doesnt have any PRs
+                  resolve(false)
+                }
+              }).catch((err) => {
+                console.log('Error on listPullRequests', err)
+                reject(err)
               })
+            }))
+          }
+        })
+        // This waits for the array of promises to finish, before resolving or rejecting
+        Promise.all(reposPrs).then(teamPrs => {
+          resolve(teamPrs.filter((repo) => {
+            if (repo && repo.length > 0) {
+              return repo
             }
-          })
-          that.setState({
-            prs: openPrs,
-            infoteam: mexTeamInfo
-          })
+            return false
+          }))
         }).catch((err) => {
           console.log(err)
+          reject(err)
         })
-
-
+      }).catch((err) => {
+        console.error(err)
+        reject(err)
       })
     })
+  }
+
+  componentDidMount() {
+    const that = this
+
+    this.getTeamInfo().then((infoteam) => {
+      that.setState({
+        infoteam
+      })
+    })
+
+    this.getReposInfo().then((prs) => {
+      that.setState({
+        prs: [].concat.apply([], prs).map(pr => {
+          return ({
+            repo: pr.head.repo.name,
+            number: pr.number,
+            user: pr.user,
+            title: pr.title,
+            state: pr.state
+          })
+        })
+      })
+    })
+
   }
 
   render() {
     const prsList = this.state.prs
     const infoTeamList = this.state.infoteam
 
-    // ESTO ESTA MUY FEO, Y CREO QUE SE LO QUE CAUSA EL LOOP FEO EN Projects
-    // BUSCAR OTRA FORMA, USANDO COMPONENT WILL MOUNT O ALGO ASI.
     if (prsList !== 'null' && infoTeamList !== 'null') {
       return (
         <div className="App">

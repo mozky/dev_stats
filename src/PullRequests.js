@@ -7,41 +7,48 @@ export default class PullRequests extends Component {
   render() {
     const prsList = this.props.prs
 
-    let openPrs = [];
-    let closedPrs = [];
+    if (prsList) {
+      let openPrs = [];
+      let closedPrs = [];
 
-    prsList.forEach((pr) => {
-      if (pr.state === 'open') {
-        openPrs.push(pr)
-      } else {
-        closedPrs.push(pr)
-      }
-    })
+      prsList.forEach((pr) => {
+        if (pr.state === 'open') {
+          openPrs.push(pr)
+        } else {
+          closedPrs.push(pr)
+        }
+      })
 
-    let openPrItems = openPrs.map((pr) =>
+      let openPrItems = openPrs.map((pr) =>
       <li key={pr.repo + '-' + pr.number}>
-        {pr.user.login} [{pr.repo} - {pr.state.toUpperCase()}: {pr.title}
-      </li>
-    )
+      {pr.user.login} [{pr.repo} - {pr.state.toUpperCase()}: {pr.title}
+        </li>
+      )
 
-    let closedPrItems = closedPrs.map((pr) =>
+      let closedPrItems = closedPrs.map((pr) =>
       <li key={pr.repo + '-' + pr.number}>
-        {pr.user.login} [{pr.repo} - {pr.state.toUpperCase()}: {pr.title}
-      </li>
-    )
+      {pr.user.login} [{pr.repo} - {pr.state.toUpperCase()}: {pr.title}
+        </li>
+      )
 
-    return (
-      <div id="pull_requests">
+      return (
+        <div id="pull_requests">
         <h1 className="title">Pull Requests</h1>
         <h2>Open</h2>
         <ul>
-          { openPrItems }
+        { openPrItems }
         </ul>
         <h2>Recently Closed</h2>
         <ul>
-          { closedPrItems }
+        { closedPrItems }
         </ul>
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div>Oops something went wrong</div>
+      )
+    }
+
   }
 }
