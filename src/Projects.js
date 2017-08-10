@@ -93,8 +93,9 @@ export default class Projects extends Component {
           usersItem.push(
             <div key={teamMember.username}>
               <a href={teamMember.htmlurl}>
-                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width: '6em', height: '6em'}} />
+                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width: '6em', height: '6em',borderWidth:5,borderStyle:"solid",borderColor:teamMember.color}} />
                 <p className="userName">{teamMember.fullName}</p>
+                <p className="userName">{teamMember.username}</p>
               </a>
             </div>
           )

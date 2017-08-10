@@ -6,18 +6,20 @@ export default class Users extends Component{
     }
 
     render(){
-      const teamInfo = this.props.infoteam
+      const teamInfo = this.props.team;
       let usersElement = teamInfo.map((info) =>
-        <li key={info.userName}>
-          <a href={info.htmlurl}>{info.fullName}</a>
-          <img src={info.avatarurl} style={{width:50,height:50}} />
-        </li>
+          <div key={info.username}>
+              <a href={info.htmlurl}>
+                  <img src={info.avatarurl} style={{width:50,height:50,borderColor:info.color,borderWidth:5,borderStyle:"solid"}} />
+                  <p className="userName">{info.fullName}</p>
+              </a>
+        </div>
       )
 
       return (
-        <ul>
+        <div className="userList">
           {usersElement}
-        </ul>
-      )
+        </div>
+        )
     }
 }

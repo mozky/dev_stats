@@ -114,6 +114,18 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+.userIcon {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.userList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
 .project {
   flex-grow: 1;
   text-align: center;
