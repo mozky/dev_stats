@@ -11,8 +11,7 @@ export default class Projects extends Component {
       projects: [
         {
           id: 1,
-          state: 'coding',
-          completed: 90,
+          state: 'merged',
           users: ['sainoba'],
           name: 'Site Mover'
         }, {
@@ -81,10 +80,10 @@ export default class Projects extends Component {
           </div>
         )
         break
-      case 'done':
+      case 'merged':
         stateItem = (
           <div key={pr.id} className="wrapper stateWrapper">
-            <div>Done!</div>
+            <div>Merged!!</div>
           </div>
         )
         break
