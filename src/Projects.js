@@ -14,19 +14,31 @@ export default class Projects extends Component {
           state: 'coding',
           completed: 90,
           users: ['sainoba'],
-          name: 'Tiny Database'
+          name: 'Site Mover'
         }, {
           id: 2,
           state: 'coding',
           completed: 65,
           users: ['quijaman1988', 'luisaguilar2910'],
-          name: 'Albums 2.0'
+          name: 'Albums 2.1'
         }, {
           id: 3,
           state: 'qa',
           users: ['thalianetzahuatl'],
           name: 'Shangha'
-        },
+        }, {
+          id: 4,
+          state: 'coding',
+          completed: 2 ,
+          users: ['mozky', 'LuisEvilCo'],
+          name: 'SIS startup'
+        }, {
+          id: 5,
+          state: 'coding',
+          completed: 95,
+          users: ['mozky', 'LuisEvilCo', 'Sler69', 'sainoba'],
+          name: 'DEV Stats'
+        }
       ]
     }
   }
@@ -91,12 +103,7 @@ export default class Projects extends Component {
       this.props.team.forEach((teamMember) => {
         if (user === teamMember.username)
           usersItem.push(
-            <div key={teamMember.username}>
-              <a href={teamMember.htmlurl}>
-                <img alt="some ugly dev" src={teamMember.avatarurl} style={{width: '6em', height: '6em',borderWidth:5,borderStyle:"solid",borderColor:teamMember.color}} />
-                <p className="userName">{teamMember.fullName}</p>
-                <p className="userName">{teamMember.username}</p>
-              </a>
+            <div key={teamMember.username} className="circle" style={{background:teamMember.color}}>
             </div>
           )
       })
@@ -104,8 +111,8 @@ export default class Projects extends Component {
 
     return (
       <div className="project" key={pr.name}>
-        <p className="projectTitle">{pr.name}</p>
         <div className="projectThumb">
+          <p className="projectTitle">{pr.name}</p>
           {usersItem.map(user => user)}
         </div>
         <div className="projectState">

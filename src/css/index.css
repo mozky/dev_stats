@@ -20,10 +20,11 @@ body {
     /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(225deg, #16222A 0%, #26323A 85%, #66727A 100%);*/
     /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #8e9eab 0%, #E2E2E2 100%);*/
     /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #274046 0%, #E6DADA 100%);*/
-    background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #274046 0%, #757F9A 100%);
+    /*background-image: url("../imgs/edlio_qr.png"), linear-gradient(180deg, #274046 0%, #757F9A 100%);*/
+    background-image: linear-gradient(180deg, #274046 0%, #757F9A 100%);
     background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: 200px, 100%;
+    background-size: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -61,10 +62,11 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%);
 }
 #App-header {
-    height: 10%;
+    height: 15%;
 }
 #App-body {
-    height: 90%;
+    padding-top: 1em;
+    height: 80%;
 }
 
 #main_content {
@@ -85,13 +87,14 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%
 }
 
-#pull_requests ul:last-of-type {
-    overflow-y: scroll;
+.prItem {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
 }
 
-.projectThumb {
-  display: flex;
-  justify-content: space-around;
+#pull_requests ul:last-of-type {
+    overflow-y: scroll;
 }
 
 .userName {
@@ -100,10 +103,27 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+.projectThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .projectTitle {
   font-size: 2em;
   font-weight: bold;
   margin: .2em 0;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+  margin-left: .5em;
+  margin-right: .5em;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+  line-height: 1em;
 }
 
 .projectsBody {
@@ -155,4 +175,22 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   bottom: 0px;
   width: 100%;
+}
+
+#scrollBar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+	background-color: #CCCCCC;
+}
+
+#scrollBar::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#scrollBar::-webkit-scrollbar-thumb
+{
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%)
 }
