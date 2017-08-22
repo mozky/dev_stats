@@ -194,3 +194,9 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #FFF;
 	background-image: -webkit-linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%)
 }
+
+.projectState {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7)
+}

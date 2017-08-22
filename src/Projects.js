@@ -76,21 +76,21 @@ export default class Projects extends Component {
       case 'qa':
         stateItem = (
           <div key={pr.id} className="wrapper stateWrapper">
-            <div>Currently on Quality Assurance...</div>
+            <div className="projectState">Currently on Quality Assurance...</div>
           </div>
         )
         break
       case 'merged':
         stateItem = (
           <div key={pr.id} className="wrapper stateWrapper">
-            <div>Merged!!</div>
+            <div className="projectState">Merged!!</div>
           </div>
         )
         break
       default:
         stateItem = (
           <div key={pr.id} className="wrapper stateWrapper">
-            <div>Project in limbo..</div>
+            <div className="projectState">Project in limbo..</div>
           </div>
         )
     }
