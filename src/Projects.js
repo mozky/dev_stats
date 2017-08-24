@@ -23,8 +23,8 @@ export default class Projects extends Component {
         }, {
           id: 3,
           state: 'qa',
-          users: ['thalianetzahuatl'],
-          name: 'Shangha'
+          users: ['thalianetzahuatl', 'Sler69'],
+          name: 'Sangha'
         }, {
           id: 4,
           state: 'coding',
