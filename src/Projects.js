@@ -11,30 +11,31 @@ export default class Projects extends Component {
       projects: [
         {
           id: 1,
-          state: 'merged',
+          state: 'coding',
+          completed: 30,
           users: ['sainoba'],
-          name: 'Site Mover'
+          name: 'Fixing Smoke Tests'
         }, {
           id: 2,
           state: 'coding',
-          completed: 65,
+          completed: 80,
           users: ['quijaman1988', 'luisaguilar2910'],
           name: 'Albums 2.1'
         }, {
           id: 3,
-          state: 'qa',
+          state: 'coding',
+          completed: 60,
           users: ['thalianetzahuatl', 'Sler69'],
-          name: 'Sangha'
+          name: 'Sangha Integration'
         }, {
           id: 4,
           state: 'coding',
-          completed: 2 ,
+          completed: 25 ,
           users: ['mozky', 'LuisEvilCo'],
-          name: 'SIS startup'
+          name: 'Preparations Custom SIS importer'
         }, {
           id: 5,
-          state: 'coding',
-          completed: 95,
+          state: 'merged',
           users: ['mozky', 'LuisEvilCo', 'Sler69', 'sainoba'],
           name: 'DEV Stats'
         }
