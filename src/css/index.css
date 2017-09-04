@@ -200,3 +200,28 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7)
 }
+
+.deadDev {
+  position: relative;
+}
+
+.deadDev:after, .deadDev:before {
+  position: absolute;
+}
+
+.deadDev:after {
+    content:'';
+    width: 100%; height: calc(100% - 1em);
+    top:0; left:0;
+    background:rgba(0,0,0,0.6);
+}
+
+.deadDev:before {
+    content: "WASTED";
+    width: 100%;
+    color: red;
+    font-weight: bolder;
+    z-index: 1;
+    bottom: 50%;
+    text-align: center;
+}

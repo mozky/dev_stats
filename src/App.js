@@ -12,13 +12,14 @@ class App extends Component {
     this.getTeamInfo = this.getTeamInfo.bind(this)
     this.refreshData = this.refreshData.bind(this)
     this.gh = new GitHub({
-      token: 'de0c27930154c553912f47d8b58ceb2b559e73fa'
+      token: '7c4850dd2b8ee2a8245cecbb3e07341e279151b8'
     })
     this.mexTeam = ['sainoba', 'LuisEvilCo', 'mozky', 'quijaman1988', 'thalianetzahuatl', 'Sler69', 'luisaguilar2910']
     this.colorMap = {'sainoba':'#009688', 'LuisEvilCo':'#2196F3', 'mozky':'#9C27B0', 'quijaman1988':'#9E9E9E', 'thalianetzahuatl':'#FF9800', 'Sler69':'#CDDC39', 'luisaguilar2910':'#E91E63'}
     this.state = {
       prs: 'null',
-      infoteam: 'null'
+      infoteam: 'null',
+      etags: 'null'
     }
   }
 
@@ -74,6 +75,7 @@ class App extends Component {
 
       const edlio = that.gh.getOrganization('edlio')
       const reposPrs = []
+      const reposEtags = []
 
       edlio.getRepos().then((repos) => {
         repos.data.forEach((repo) => {
@@ -81,6 +83,11 @@ class App extends Component {
           if (!repo.fork) {
             reposPrs.push(new Promise((resolve, reject) => {
               that.gh.getRepo('edlio', repo.name).listPullRequests({state: 'all'}).then((res) => {
+                // Lets save the ETag so we can add it to further requests and user githubs cache
+                reposEtags.push({
+                  repo: repo.name,
+                  etag: res.headers.etag
+                })
                 if (res.data.length > 0) {
                   resolve(res.data.filter(pr => {
                     if (that.mexTeam.indexOf(pr.user.login) > 0) {
@@ -101,6 +108,9 @@ class App extends Component {
         })
         // This waits for the array of promises to finish, before resolving or rejecting
         Promise.all(reposPrs).then(teamPrs => {
+          that.setState({
+            etags: reposEtags
+          })
           resolve(teamPrs.filter((repo) => {
             if (repo && repo.length > 0) {
               return repo
@@ -135,13 +145,13 @@ class App extends Component {
             number: pr.number,
             user: pr.user,
             title: pr.title,
-            state: pr.state
+            state: pr.state,
           })
         })
       })
     })
 
-    this.refresher = setInterval(this.refreshData, 10000)
+    // this.refresher = setInterval(this.refreshData, 60000)
 
   }
 
