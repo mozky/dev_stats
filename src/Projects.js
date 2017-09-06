@@ -18,7 +18,7 @@ export default class Projects extends Component {
         }, {
           id: 2,
           state: 'coding',
-          completed: 80,
+          completed: 90,
           users: ['quijaman1988', 'luisaguilar2910'],
           name: 'Albums 2.1'
         }, {
