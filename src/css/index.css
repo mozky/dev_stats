@@ -152,12 +152,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .barWrapper {
-  height: 2.5em;
-  border: 1px solid white;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 17px;
+    overflow: hidden;
 }
 
 .barWrapper .bar {
-  height: 2.5em;
+  height: 1rem;
+  border-bottom-right-radius: 17px;
+  border-top-right-radius: 17px;
 }
 
 .title {

@@ -46,13 +46,13 @@ export default class Projects extends Component {
   getProgressBarColor(percent) {
     switch (true) {
       case (percent > 80):
-        return 'green'
+        return 'linear-gradient(45deg, #d4fc79, #96e6a1)'
       case (percent > 60):
-        return 'yellow'
+        return 'linear-gradient(45deg, #fa709a, #fee140)'
       case (percent > 40):
-        return 'orange'
+        return 'linear-gradient(45deg, #fc6076, #ff9a44)'
       default:
-        return 'red'
+        return 'linear-gradient(45deg, #ff0844, #ffb199)'
     }
   }
 
@@ -62,7 +62,7 @@ export default class Projects extends Component {
 
     const projectStyle = {
       "width": pr.completed + "%",
-      "backgroundColor": this.getProgressBarColor(pr.completed)
+      "backgroundImage": this.getProgressBarColor(pr.completed)
     }
 
     // We create the 'status bar' for each project
