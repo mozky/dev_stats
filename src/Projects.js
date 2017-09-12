@@ -12,7 +12,7 @@ export default class Projects extends Component {
         {
           id: 1,
           state: 'coding',
-          completed: 30,
+          completed: 27,
           users: ['sainoba'],
           name: 'Fixing Smoke Tests'
         }, {
@@ -24,7 +24,7 @@ export default class Projects extends Component {
         }, {
           id: 3,
           state: 'coding',
-          completed: 60,
+          completed: 77,
           users: ['thalianetzahuatl', 'Sler69'],
           name: 'Sangha Integration'
         }, {
@@ -46,13 +46,13 @@ export default class Projects extends Component {
   getProgressBarColor(percent) {
     switch (true) {
       case (percent > 80):
-        return 'linear-gradient(45deg, #d4fc79, #96e6a1)'
+        return 'linear-gradient(45deg, #43C6AC, #96e6a1)'
       case (percent > 60):
-        return 'linear-gradient(45deg, #fa709a, #fee140)'
+        return 'linear-gradient(45deg, #fee140, #d4fc79)'
       case (percent > 40):
-        return 'linear-gradient(45deg, #fc6076, #ff9a44)'
+        return 'linear-gradient(45deg, #ff9a44, #eaa33f)'
       default:
-        return 'linear-gradient(45deg, #ff0844, #ffb199)'
+        return 'linear-gradient(45deg, #ff0844, #c33764)'
     }
   }
 
