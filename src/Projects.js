@@ -30,7 +30,7 @@ export default class Projects extends Component {
         }, {
           id: 4,
           state: 'coding',
-          completed: 25 ,
+          completed: 53 ,
           users: ['mozky', 'LuisEvilCo'],
           name: 'Preparations Custom SIS importer'
         }, {
