@@ -1,13 +1,16 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 
 # testing
-/coverage
+coverage/
 
 # production
-/build
+build/
+
+# key files
+*.key.json
 
 # misc
 .DS_Store
@@ -21,3 +24,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+
+dev_stats.zip
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
