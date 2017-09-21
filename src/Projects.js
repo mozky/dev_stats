@@ -35,9 +35,10 @@ export default class Projects extends Component {
           name: 'Preparations Custom SIS importer'
         }, {
           id: 5,
-          state: 'merged',
-          users: ['mozky', 'LuisEvilCo', 'Sler69', 'sainoba'],
-          name: 'DEV Stats'
+          state: 'coding',
+          completed: 20,
+          users: ['mozky'],
+          name: 'DEV Stats v0.2'
         }
       ]
     }
