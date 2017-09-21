@@ -9,6 +9,9 @@ coverage/
 # production
 build/
 
+# key files
+*.key.json
+
 # misc
 .DS_Store
 .env.local

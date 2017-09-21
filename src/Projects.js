@@ -8,40 +8,23 @@ export default class Projects extends Component {
     super(props)
 
     this.state = {
-      projects: [
-        {
-          id: 1,
-          state: 'coding',
-          completed: 27,
-          users: ['sainoba'],
-          name: 'Fixing Smoke Tests'
-        }, {
-          id: 2,
-          state: 'coding',
-          completed: 90,
-          users: ['quijaman1988', 'luisaguilar2910'],
-          name: 'Albums 2.1'
-        }, {
-          id: 3,
-          state: 'coding',
-          completed: 77,
-          users: ['thalianetzahuatl', 'Sler69'],
-          name: 'Sangha Integration'
-        }, {
-          id: 4,
-          state: 'coding',
-          completed: 53 ,
-          users: ['mozky', 'LuisEvilCo'],
-          name: 'Preparations Custom SIS importer'
-        }, {
-          id: 5,
-          state: 'coding',
-          completed: 20,
-          users: ['mozky'],
-          name: 'DEV Stats v0.2'
-        }
-      ]
+      projects: null
     }
+  }
+
+  componentDidMount() {
+    const that = this
+    fetch('//localhost:8081/projects').then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      console.log(json)
+      that.setState({
+        projects: json
+      })
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
   }
 
   getProgressBarColor(percent) {
@@ -127,17 +110,24 @@ export default class Projects extends Component {
 
     const projects = this.state.projects
 
-    const projectsItems = projects.map(pr => {
-      return this.getProjectItem(pr)
-    })
+    if (projects) {
+      const projectsItems = projects.map(pr => {
+        return this.getProjectItem(pr)
+      })
 
-    if (projects)
-    return (
-      <div id="projects">
+      return (
+        <div id="projects">
         <div className="projectsBody">
-          { projectsItems }
+        { projectsItems }
         </div>
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          fetching projects...
+        </div>
+      )
+    }
   }
 }

@@ -1,8 +1,12 @@
 const Utils = require('./utils.js')
 const express = require('express')
+const Projects = require('./projects.js')
+const cors = require('cors')
 const app = express()
 
 exports.start = function(PORT, MODE, STATIC_FILES_LOCATION) {
+  // Add cors support
+  app.use(cors())
 
   // Health endpoint
   app.get('/health', function(req, res) {
@@ -11,9 +15,8 @@ exports.start = function(PORT, MODE, STATIC_FILES_LOCATION) {
     })
   })
 
-  // TODO: Serve data from db
   app.get('/projects', function(req, res) {
-    res.send('NYI')
+    res.status(200).send(Projects.get())
   })
 
   // We only serve de build files on production

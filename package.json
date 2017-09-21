@@ -1,8 +1,10 @@
 {
   "name": "dev_stats",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.4",
+    "firebase-admin": "^5.2.1",
     "github-api": "^3.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
