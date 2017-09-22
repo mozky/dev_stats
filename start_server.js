@@ -1,12 +1,13 @@
+const Config = require('./config.server.js')
 const Server = require('./server')
 const path = require('path')
 
-if (process.env.NODE_ENV === 'production') {
+if (Config.NODE_ENV === 'production') {
   Server.start(
-    process.env.PORT || 8081,
+    Config.PORT,
     'PRODUCTION',
-    path.join(__dirname, 'build')
+    path.join(__dirname, Config.BUILD_PATH)
   )
 } else {
-  Server.start(process.env.PORT || 8081, 'DEVELOPMENT')
+  Server.start(Config.PORT, 'DEVELOPMENT')
 }

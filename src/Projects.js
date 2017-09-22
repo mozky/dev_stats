@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Config from './config.app'
 
 /**
  * Created by moz on 12/07/17.
@@ -14,10 +15,9 @@ export default class Projects extends Component {
 
   componentDidMount() {
     const that = this
-    fetch('//localhost:8081/projects').then(function(response) {
+    fetch(Config.API_URL + '/projects').then(function(response) {
       return response.json()
     }).then(function(json) {
-      console.log(json)
       that.setState({
         projects: json
       })

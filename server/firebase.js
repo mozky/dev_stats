@@ -1,10 +1,11 @@
 var admin = require("firebase-admin")
+var Config = require("../config.server")
 
-var serviceAccount = require("/dev-stats/dev-stats-firebase.key.json")
+var serviceAccount = require(Config.FIREBASE_KEY_LOCATION)
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://dev-stats-fdf2s.firebaseio.com"
+  databaseURL: Config.FIREBASE_DATABASE_URL
 })
 
 var db = admin.database()
