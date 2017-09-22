@@ -10,7 +10,9 @@ coverage/
 build/
 
 # key files
-*.key.json
+*.pem
+*.key
+*.key.*
 
 # misc
 .DS_Store
