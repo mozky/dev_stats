@@ -1,6 +1,6 @@
 {
   "name": "dev_stats",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "dependencies": {
     "cors": "^2.8.4",
