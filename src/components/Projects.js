@@ -4,28 +4,6 @@ import React, { Component } from 'react'
  * Created by moz on 12/07/17.
  */
 export default class Projects extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      projects: null
-    }
-  }
-
-  componentDidMount() {
-    const that = this
-    fetch('/projects').then(function(response) {
-      return response.json()
-    }).then(function(json) {
-      that.setState({
-        projects: json
-      })
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
-  }
-
   getProgressBarColor(percent) {
     switch (true) {
       case (percent > 80):
@@ -40,7 +18,6 @@ export default class Projects extends Component {
   }
 
   getProjectItem(pr) {
-
     let stateItem = 'null'
 
     const projectStyle = {
@@ -84,9 +61,9 @@ export default class Projects extends Component {
     // We add the user thumbnail for each project
     pr.users.forEach(user => {
       this.props.team.forEach((teamMember) => {
-        if (user === teamMember.username)
+        if (user === teamMember)
           usersItem.push(
-            <div key={teamMember.username} className="circle" style={{background:teamMember.color}}>
+            <div key={teamMember} className="circle" style={{background:this.props.teamColorMap[teamMember]}}>
             </div>
           )
       })
@@ -106,27 +83,19 @@ export default class Projects extends Component {
   }
 
   render () {
+    const projects = this.props.projects
 
-    const projects = this.state.projects
+    const projectsItems = projects.map(pr => {
+      return this.getProjectItem(pr)
+    })
 
-    if (projects) {
-      const projectsItems = projects.map(pr => {
-        return this.getProjectItem(pr)
-      })
-
-      return (
-        <div id="projects">
+    return (
+      <div id="projects">
         <div className="projectsBody">
-        { projectsItems }
+          { projectsItems }
         </div>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          fetching projects...
-        </div>
-      )
-    }
+      </div>
+    )
   }
+
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class Users extends Component{
+export default class Users extends Component {
     render() {
       const deadDevs = 'thalianetzahuatl'
+      const teamInfo = this.props.team
 
-      const teamInfo = this.props.team;
       let usersElement = teamInfo.map((info) =>
           <div className = {"userImage" + (info.username === deadDevs ? " deadDev" : "")} key={info.username}>
               <a href={info.htmlurl}>
@@ -20,4 +20,5 @@ export default class Users extends Component{
         </div>
         )
     }
+
 }
