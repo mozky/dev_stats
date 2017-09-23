@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Config from './config.app'
+import React, { Component } from 'react'
 
 /**
  * Created by moz on 12/07/17.
@@ -15,7 +14,7 @@ export default class Projects extends Component {
 
   componentDidMount() {
     const that = this
-    fetch(Config.API_URL + '/projects').then(function(response) {
+    fetch('/projects').then(function(response) {
       return response.json()
     }).then(function(json) {
       that.setState({
@@ -80,7 +79,7 @@ export default class Projects extends Component {
         )
     }
 
-    let usersItem = [];
+    let usersItem = []
 
     // We add the user thumbnail for each project
     pr.users.forEach(user => {
