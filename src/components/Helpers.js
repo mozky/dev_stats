@@ -8,3 +8,11 @@ export const Loading = () => {
     </div>
   )
 }
+
+export const Error = () => {
+  return (
+    <div className="error">
+      <h3 id="error-text">Error loading this element...</h3>
+    </div>
+  )
+}
