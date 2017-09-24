@@ -180,22 +180,26 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-#scrollBar::-webkit-scrollbar-track
+.scrollBar::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
 	background-color: #CCCCCC;
 }
 
-#scrollBar::-webkit-scrollbar
+.scrollBar::-webkit-scrollbar
 {
 	width: 10px;
 	background-color: #F5F5F5;
 }
 
-#scrollBar::-webkit-scrollbar-thumb
+.scrollBar::-webkit-scrollbar-thumb
 {
 	background-color: #FFF;
 	background-image: -webkit-linear-gradient(135deg, #F8FFAE 0%, #43C6AC 100%)
+}
+
+#openPrs {
+  min-height: 30vh;
 }
 
 .projectState {

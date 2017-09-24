@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import Projects from '../components/Projects'
+import React from 'react'
 import { Loading } from '../components/Helpers'
+import Projects from '../components/Projects'
+import { USERS_LIST } from '../config.app'
 
-export default class ProjectsContainer extends Component {
+export default class ProjectsContainer extends React.Component {
   constructor(props) {
     super(props)
 
@@ -31,7 +32,7 @@ export default class ProjectsContainer extends Component {
 
     if (projects) {
       return (
-        <Projects team={this.props.team} teamColorMap={this.props.teamColorMap}
+        <Projects team={USERS_LIST} colorMap={this.props.colorMap}
           projects={projects}/>
       )
     } else {

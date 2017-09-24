@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker'
 import ReactDOM from 'react-dom'
 import App from './App'
 
+// URI for GITHUB GraphQL endpoint
 const networkInterface = createNetworkInterface({
   uri: GITHUB_GRAPHQL_URI
 })

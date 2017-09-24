@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Loading, Error } from '../components/Helpers'
 import { graphql, gql } from 'react-apollo'
 import { USERS_LIST } from '../config.app'
 import User from '../components/User'
 
-class UsersContainer extends Component {
+class UsersContainer extends React.Component {
   render() {
     const usersInfo = this.props.usersInfoQuery
 
