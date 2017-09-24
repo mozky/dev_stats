@@ -1,12 +1,16 @@
+const Projects = require('./projects.js')
 const Utils = require('./utils.js')
 const express = require('express')
-const Projects = require('./projects.js')
+const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 
 exports.start = function(PORT, MODE, STATIC_FILES_LOCATION) {
   // Add cors support
   app.use(cors())
+
+  // Add morgan as request logger
+  app.use(morgan('dev'))
 
   // Health endpoint
   app.get('/health', function(req, res) {

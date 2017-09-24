@@ -2,7 +2,9 @@ const Firebase = require('./firebase.js')
 
 var projectsRef = Firebase.getDb().ref("projects")
 var projects = {}
-projectsRef.once("value", function(snapshot) {
+
+projectsRef.on("value", function(snapshot) {
+  console.log('Getting new projects data...')
   projects = snapshot.val()
 })
 
