@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 /**
  * Created by moz on 12/07/17.
  */
-export default class Projects extends Component {
+export default class Projects extends React.Component {
   getProgressBarColor(percent) {
     switch (true) {
       case (percent > 80):
@@ -63,7 +63,7 @@ export default class Projects extends Component {
       this.props.team.forEach((teamMember) => {
         if (user === teamMember)
           usersItem.push(
-            <div key={teamMember} className="circle" style={{background:this.props.teamColorMap[teamMember]}}>
+            <div key={teamMember} className="circle" style={{background:this.props.colorMap[teamMember]}}>
             </div>
           )
       })

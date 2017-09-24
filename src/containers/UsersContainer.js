@@ -1,39 +1,56 @@
-import React, { Component } from 'react'
-import GitHubCaller from '../utils/GitHubCaller'
-import { Loading } from '../components/Helpers'
-import Users from '../components/Users'
+import React from 'react'
+import { Loading, Error } from '../components/Helpers'
+import { graphql, gql } from 'react-apollo'
+import { USERS_LIST } from '../config.app'
+import User from '../components/User'
 
-export default class UsersContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      infoteam: false
-    }
-  }
-
-  componentDidMount() {
-    const that = this
-    const GitHub = new GitHubCaller()
-
-    GitHub.getUsersData(that.props.users, that.props.colorMap).then((infoteam) => {
-      that.setState({
-        infoteam
-      })
-    })
-  }
-
+class UsersContainer extends React.Component {
   render() {
-    const infoTeamList = this.state.infoteam
+    const usersInfo = this.props.usersInfoQuery
 
-    if (infoTeamList) {
-      return (
-        <Users team={infoTeamList} className="projectThumb"/>
-      )
-    } else {
-      return (
-        <Loading />
-      )
+    if (usersInfo && usersInfo.loading) {
+      return <Loading />
     }
-  }
 
+    if (usersInfo && usersInfo.error) {
+      return <Error />
+    }
+
+    return (
+      <div className="userList">
+        {USERS_LIST.map(user => (
+          <User
+            key={user}
+            color={this.props.colorMap[user]}
+            username={usersInfo[user].login}
+            url={usersInfo[user].url}
+            name={usersInfo[user].name}
+            avatarUrl={usersInfo[user].avatarUrl}
+          />
+        ))}
+      </div>
+    )
+  }
 }
+
+//Generate GraphQL query with the users list
+let usersQueries = USERS_LIST.reduce((accumulator, user) => {
+  return accumulator + `
+    ${user}: user(login: "${user}") {
+      bio
+      login
+      email
+      avatarUrl
+      name
+      url
+    }
+  `
+}, '')
+
+const USERS_INFO_QUERY = gql`
+  query {
+    ${usersQueries}
+  }
+`
+
+export default graphql(USERS_INFO_QUERY, { name: 'usersInfoQuery' }) (UsersContainer)

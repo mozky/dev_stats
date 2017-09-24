@@ -1,6 +1,9 @@
 import GitHub from 'github-api'
 import { GITHUB_TOKEN } from '../config.app'
 
+/**
+* @deprecated: Use GraphQL instead of REST calls
+**/
 export default class GitHubCaller {
   constructor() {
     this.GH = new GitHub({
