@@ -4,7 +4,7 @@ Simple webapp that displays development stats for a given GitHub company
 
 ## Arquitectura
 
-El repositorio esta formado por una aplicación creada con `create-react-app` y
+El repositorio está formado por una aplicación creada con `create-react-app` y
 un servidor `express` que brinda la información
 
 
