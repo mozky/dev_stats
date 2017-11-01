@@ -6,9 +6,9 @@ if (process.env.NODE_ENV === 'production') {
   exports.BUILD_PATH = 'build'
 } else {
   exports.NODE_ENV = 'development'
-  exports.API_URL = '//localhost:80'
+  exports.API_URL = '//localhost:8081'
 }
 
-exports.PORT = 80
+exports.PORT = 8081
 exports.FIREBASE_KEY_LOCATION = '/dev_stats/dev-stats-firebase.key.json'
 exports.FIREBASE_DATABASE_URL = 'https://dev-stats-fdf2s.firebaseio.com'
