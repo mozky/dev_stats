@@ -10,5 +10,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 exports.PORT = 8081
-exports.FIREBASE_KEY_LOCATION = '/dev-stats/dev-stats-firebase.key.json'
+exports.FIREBASE_KEY_LOCATION = '/dev_stats/dev-stats-firebase.key.json'
 exports.FIREBASE_DATABASE_URL = 'https://dev-stats-fdf2s.firebaseio.com'
