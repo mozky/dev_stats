@@ -2,13 +2,13 @@
 
 if (process.env.NODE_ENV === 'production') {
   exports.NODE_ENV = 'production'
-  exports.API_URL = 'http://edlio-dev-stats.us-east-1.elasticbeanstalk.com'
+  exports.API_URL = 'http://ec2-54-175-152-218.compute-1.amazonaws.com'
   exports.BUILD_PATH = 'build'
 } else {
   exports.NODE_ENV = 'development'
-  exports.API_URL = '//localhost:8081'
+  exports.API_URL = '//localhost:80'
 }
 
-exports.PORT = 8081
+exports.PORT = 80
 exports.FIREBASE_KEY_LOCATION = '/dev_stats/dev-stats-firebase.key.json'
 exports.FIREBASE_DATABASE_URL = 'https://dev-stats-fdf2s.firebaseio.com'
